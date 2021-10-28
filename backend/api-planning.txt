@@ -1,0 +1,77 @@
+Standar API
+
+{root.ap}/{version}/{grouping}/{endpoint}
+SAMPLE:
+http://mern-api.com/v1/auth/login
+
+Standar Status response
+200 - OK                    -> Call API Success
+201 - CREATED               -> Post Success
+400 - BAD REQUEST           -> Error on Client Side (Bisa input salah dll)
+401 - UNAUTHORIZED          -> User not Authorized to the Request
+403 - FORBIDDEN             -> User not Allowed to Access
+404 - NOT FOUND             -> Request Endpoint Not Found
+500 - INTERNAL SERVER ERROR -> Error on Server Side
+502 - BAD GATEWAY           -> Invalid Response from Another Request
+
+GROUP: Authentication
+
+[1] - Register
+{root.ap}/{version}/auth/Register
+req:
+{
+  "name": "Testing",
+  "email": "test@gmail.com",
+  "password": "123123"
+}
+res:
+{
+  "message": "Register Success",
+  "data": {
+    "id": 1,
+    "name": "Testing",
+    "email": "test@gmail.com",
+    "password": "123123"
+  }
+}
+err-response:
+400 -> Input yang anda masukan tidak valid
+
+[2] - Login
+{root.ap}/{version}/auth/login
+req:
+{
+  ""
+}
+
+===============================================================================================
+
+GROUP: BLOG
+
+[1] - Create Blog Post
+[POST] : {root.api}/{version}/blog/post
+req:
+{
+  "title" : "Title Blog",
+  "image" : "imagefile.png",
+  "body"  : "Lorem asd asdsiua " 
+}
+res:
+{
+  "message" : "Create Blog Post Success",
+  "data"    : {
+    "post_id" : 1,
+    "title"   : "Title Blog",
+    "image"   : "imagefile.png",
+    "body"    : "Lorem asd asdasdj asdn",
+    "create_at" : "12/06/2021",
+    "author"  : {
+      "uid"  : 1,
+      "name" : "Testing"
+    }
+  }
+}
+
+[2] - Get Blog Post
+[3] - Update Blog Post
+[4] - Delete Blog Post
